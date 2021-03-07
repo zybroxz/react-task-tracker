@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { FaTrashAlt } from 'react-icons/fa'
+import { useState, useEffect } from 'react'
 import Header from './Components/Header'
 import Tasks from './Components/Tasks'
 import AddTask from './Components/AddTask'
@@ -8,35 +7,26 @@ function App() {
 
     const [showAddTask, setShowAddTask] = useState(false)
 
-    const [tasks, setTasks] = useState([
-        {
-            id: 1,
-            text: 'Doctors appointment',
-            day: 'Tuesday',
-            reminder: true
-        }, {
-            id: 2,
-            text: 'Conference',
-            day: 'Wednesday',
-            reminder: true
-        }, {
-            id: 3,
-            text: 'Work meal',
-            day: 'Saturday',
-            reminder: false
+    const [tasks, setTasks] = useState([])
+
+    useEffect(()=>{
+        const getTasks = async () => {
+            const fetchTasksFromServer = await fetchTasks()
+            setTasks(fetchTasksFromServer)
         }
-    ])
+        getTasks()
+    },[])
+
+    const fetchTasks = async () => {
+        const res = await fetch('http://localhost:5000/tasks')
+        const data = await res.json();
+        return data
+    }
 
     const addTask = (task) => {
         const id = Math.floor(Math.random() * 10000) + 1
-        const newTask = {
-            id,
-            ...task
-        }
-        setTasks([
-            ...tasks,
-            newTask
-        ])
+        const newTask = { id, ...task }
+        setTasks([...tasks, newTask])
     }
 
     const deleteTask = (id) => {
