@@ -1,22 +1,16 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "text": "Doctors appointment",
-      "day": "Tuesday",
-      "reminder": true
+      "text": "Walk the dog",
+      "day": "Tuesday 9am",
+      "reminder": true,
+      "id": 5
     },
     {
-      "id": 2,
-      "text": "Conference",
-      "day": "Wednesday",
-      "reminder": true
-    },
-    {
-      "id": 3,
-      "text": "Work meal",
-      "day": "Saturday",
-      "reminder": false
+      "text": "Daily stand up (purple team)",
+      "day": "Tuesday 9.15",
+      "reminder": true,
+      "id": 6
     }
   ]
 }
