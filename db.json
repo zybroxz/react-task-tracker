@@ -3,7 +3,7 @@
     {
       "text": "Walk the dog",
       "day": "Tuesday 9am",
-      "reminder": true,
+      "reminder": false,
       "id": 5
     },
     {
